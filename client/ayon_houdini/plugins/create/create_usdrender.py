@@ -30,9 +30,9 @@ class CreateUSDRender(plugin.RenderLegacyProductTypeCreator):
     icon = "magic"
     description = "Create USD Render"
 
-    default_renderer = "Karma CPU"
+    default_renderer = "Karma XPU"
     # Default render target
-    render_target = "farm_split"
+    render_target = "farm"
 
     def create(self, product_name, instance_data, pre_create_data):
 
@@ -69,7 +69,8 @@ class CreateUSDRender(plugin.RenderLegacyProductTypeCreator):
 
         parms = {
             # Render frame range
-            "trange": 1
+            "trange": 1,
+            "loppath": "/stage/OUT_Render"
         }
         if self.selected_nodes:
             parms["loppath"] = self.selected_nodes[0].path()
